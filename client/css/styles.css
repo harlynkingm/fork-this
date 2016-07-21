@@ -53,7 +53,6 @@ body{
     -o-filter: blur(5px);
     -ms-filter: blur(5px);
     filter: blur(5px);
-    transition: opacity .5s;
 }
 
 .logo{
@@ -71,13 +70,18 @@ body{
     font-size: 16px;
     background-color: #0487D9;
     color: #fff;
-    transition: opacity .2s;
+    transition: transform .2s ease-in-out, box-shadow .2s ease-in-out, background-color .2s ease-in-out;
     border: none;
+    transform: scale(1.05);
 }
 
 .fork-button:hover{
     color: #fff;
-    opacity: .8;
+    transform: scale(1.15);
+    background-color: #08A5F0;
+    -webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
 }
 
 /* iPhones */
