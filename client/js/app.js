@@ -33,8 +33,16 @@ const makeChoice = (session_id, e) => {
         .then(renderImages)
 }
 
+$('#start-button').on('click', function(){
+    const top = $('.logo').position().top + "px"
+    $('.flex-container').css('justify-content', 'flex-start')
+    $('.logo').css({'margin-top': top})
+    $('.logo').animate({'margin-top': '15px', 'max-width': '25%'})
+    $(".subhead").fadeOut(200)
+    $("#start-button").fadeOut(200)
+})
+
 getUserPosition()
     .then(startSession)
     .then(renderImages)
     .then(bindClickHandlers)
-
