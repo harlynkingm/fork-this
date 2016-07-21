@@ -20,3 +20,28 @@ body{
     font-family: BebasNeue;
     font-weight: normal;
 }
+
+.flex-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+}
+
+.logo{
+    max-width: 50%;
+}
+
+.subhead{
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+/* iPhones */
+@media (max-width: 400px){
+    .logo{
+        max-width: 75%;
+    }
+}
