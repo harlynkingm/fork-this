@@ -21,6 +21,13 @@ body{
     font-weight: normal;
 }
 
+.flex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
 .flex-container{
     display: flex;
     justify-content: center;
@@ -37,6 +44,20 @@ body{
 .subhead{
     letter-spacing: 1px;
     text-align: center;
+    margin-bottom: 65px;
+}
+
+.fork-button{
+    font-size: 16px;
+    background-color: #0487D9;
+    color: #fff;
+    transition: opacity .2s;
+    border: none;
+}
+
+.fork-button:hover{
+    color: #fff;
+    opacity: .8;
 }
 
 /* iPhones */
