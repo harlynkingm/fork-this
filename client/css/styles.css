@@ -16,19 +16,19 @@
     font-weight: 100;
 }
 
-body{
+body {
     font-family: BebasNeue;
     font-weight: normal;
 }
 
-.flex{
+.flex {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 }
 
-.flex-container{
+.flex-container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -37,7 +37,7 @@ body{
     height: 100vh;
 }
 
-.img-background{
+.img-background {
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/o.jpg');
     background-repeat: no-repeat;
     background-size: cover;
@@ -55,18 +55,18 @@ body{
     filter: blur(5px);
 }
 
-.logo{
+.logo {
     max-width: 50%;
 }
 
-.subhead{
+.subhead {
     letter-spacing: 1px;
     text-align: center;
     margin-bottom: 65px;
     color: #fff;
 }
 
-.fork-button{
+.fork-button {
     font-size: 16px;
     background-color: #0487D9;
     color: #fff;
@@ -75,7 +75,7 @@ body{
     transform: scale(1.05);
 }
 
-.fork-button:hover{
+.fork-button:hover {
     color: #fff;
     transform: scale(1.15);
     background-color: #08A5F0;
@@ -84,6 +84,7 @@ body{
     box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
 }
 
+<<<<<<< Updated upstream
 .hidden{
     visibility: hidden;
     opacity: 0;
@@ -97,9 +98,23 @@ body{
     letter-spacing: .1rem;
 }
 
+#select-picture {
+    flex-direction: row;
+    justify-content: space-between;
+    width: 80%;
+}
+
+.select-img {
+    width: 45%;
+    background-position: center;
+    background-size: cover;
+    display: none;
+}
+
 /* iPhones */
-@media (max-width: 400px){
-    .logo{
+@media (max-width: 400px) {
+    .logo {
         max-width: 75%;
     }
 }
+

@@ -1,6 +1,6 @@
 import $ from 'jquery'
 
-const API_BASE_PATH = 'interndev1-uswest1adevc'
+const API_BASE_PATH = 'http://interndev1-uswest1adevc'
 const API_URL = 'api/v1/'
 
 const getUserPosition = () => {
@@ -19,18 +19,27 @@ const startSession = (geolocation) => {
 
 const renderImages = (data) => {
     if (!data.session_done) {
-        // render photos
+        //$('#1').css('backgroundImage', `url(${data.photos.1.uri})`).show()
+        //$('#2').css('backgroundImage', `url(${data.photos.2.uri})`).show()
+        $('#1').css('backgroundImage', 'url(https://s3-media1.fl.yelpcdn.com/bphoto/CYaDabytn5SDvxXLoK3aYQ/o.jpg)').show()
+        $('#2').css('backgroundImage', 'url(https://s3-media4.fl.yelpcdn.com/bphoto/F7ido-iqXCw-R0-XhkeHiA/o.jpg)').show()
+        resizeImages()
     }
 }
 
-const bindClickHandlers = () => {
-    $('#1').on('click', makeChoice.bind(sessionId, 1))
-    $('#2').on('click', makeChoice.bind(sessionId, 2))
+const bindClickHandlers = ({session_id}) => {
+    $('#1').on('click', makeChoice.bind(session_id, 1))
+    $('#2').on('click', makeChoice.bind(session_id, 2))
 }
 
-const makeChoice = (session_id, e) => {
-    $.get(API_URL + 'get_pictures/' + session_id + '/' + choice)
+const makeChoice = (sessionId, choice) => {
+    console.log(sessionId, choice)
+    $.get(API_URL + 'get_pictures/' + sessionId + '/' + choice)
         .then(renderImages)
+}
+
+const resizeImages = () => {
+    $('.select-img').height($('.select-img').width())
 }
 
 $('#start-button').on('click', function(){
@@ -42,9 +51,14 @@ $('#start-button').on('click', function(){
     })
     $(".subhead").fadeOut(200)
     $("#start-button").fadeOut(200)
+    renderImages({session_done: false})
+    bindClickHandlers({session_id: 123})
 })
+
+$(window).on('resize', resizeImages)
 
 getUserPosition()
     .then(startSession)
     .then(renderImages)
     .then(bindClickHandlers)
+
