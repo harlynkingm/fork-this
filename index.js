@@ -1,9 +1,11 @@
 const express = require('express')
 const app = express()
 
-app.use(express.static('client'))
+const ROOT_DIR = process.env.NODE_ENV == 'production' ? 'build' : 'client'
+
+app.use(express.static(ROOT_DIR))
 
 app.listen(8222, function () {
-  console.log('listening on port 8222!');
+  console.log('serving ' + ROOT_DIR + ' on port 8222!');
 });
 
