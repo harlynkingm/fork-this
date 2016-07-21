@@ -1,0 +1,22 @@
+@font-face {
+    font-family: BebasNeue;
+    src: url('../fonts/BebasNeue_Bold.ttf');
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: BebasNeue;
+    src: url('../fonts/BebasNeue_Book.ttf');
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: BebasNeue;
+    src: url('../fonts/BebasNeue_Thin.ttf');
+    font-weight: 100;
+}
+
+body{
+    font-family: BebasNeue;
+    font-weight: normal;
+}
