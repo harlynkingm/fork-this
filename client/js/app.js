@@ -37,7 +37,9 @@ $('#start-button').on('click', function(){
     const top = $('.logo').position().top + "px"
     $('.flex-container').css('justify-content', 'flex-start')
     $('.logo').css({'margin-top': top})
-    $('.logo').animate({'margin-top': '15px', 'max-width': '25%'})
+    $('.logo').animate({'margin-top': '15px', 'max-width': '25%'}, function(){
+        $("#instructions").toggleClass('hidden');
+    })
     $(".subhead").fadeOut(200)
     $("#start-button").fadeOut(200)
 })

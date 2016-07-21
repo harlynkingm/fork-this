@@ -84,6 +84,19 @@ body{
     box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
 }
 
+.hidden{
+    visibility: hidden;
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+}
+
+#instructions{
+    transition: opacity .4s;
+    color: #fff;
+    letter-spacing: .1rem;
+}
+
 /* iPhones */
 @media (max-width: 400px){
     .logo{
