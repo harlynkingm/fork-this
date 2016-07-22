@@ -111,6 +111,16 @@ body {
     width: 45%;
     background-position: center;
     background-size: cover;
+    opacity: 0;
+    transition: transform .5s;
+}
+
+#img1 {
+    transform: translateX(-300px);
+}
+
+#img2 {
+    transform: translateX(300px);
 }
 
 /* iPhones */
