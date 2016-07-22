@@ -107,7 +107,7 @@ const makeChoice = (sessionId, choice, event) => {
             $('#instructions').css({'opacity': 1})
         }, 400)
     }
-    if (LOAD_COUNT == 8){
+    if (LOAD_COUNT == 8 || IMAGES.length < 2){
         SESSION_DONE = true
     }
     if (choice == 1){
