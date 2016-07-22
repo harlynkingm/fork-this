@@ -52,7 +52,7 @@ const makeChoice = (sessionId, choice, event) => {
             $('#instructions').css({'opacity': 1})
         }, 400)
     }
-    if (LOAD_COUNT == 10){
+    if (LOAD_COUNT == 3){
         SESSION_DONE = true
     }
     $('#img1').css({'transform':'translateX(-300px)', 'opacity': '0', 'box-shadow': ''});
@@ -64,7 +64,8 @@ const makeChoice = (sessionId, choice, event) => {
 }
 
 const showEndPage = () => {
-    console.log('hey')
+    $('#select-picture').toggleClass('hidden');
+    $('#ending-page').toggleClass('hidden');
 }
 const resizeImages = () => {
     $('.select-img').height($('.select-img').width())

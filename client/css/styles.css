@@ -114,14 +114,6 @@ body {
     letter-spacing: .1rem;
 }
 
-#bottom-instructions{
-    position: absolute;
-    bottom: 0;
-    left: 25%;
-    color: #fff;
-    transition: opacity .4s;
-}
-
 #select-picture {
     flex-direction: row;
     justify-content: space-between;
@@ -146,6 +138,22 @@ body {
     transform: translateX(300px);
 }
 
+#ending-page{
+    color: #fff;
+    margin-top: 110px;
+    transform: scale(1.8);
+    transition: opacity .4s;
+}
+
+#recommendation{
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+#we-think{
+    letter-spacing: 1px;
+}
+
 /* iPhones */
 @media (max-width: 400px) {
     .logo {
@@ -167,7 +175,7 @@ body {
         font-size: 2.5rem;
     }
 
-    #instructions {
+    #instructions, #we-think {
         font-weight: 400;
     }
     
