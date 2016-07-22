@@ -21,8 +21,8 @@ const renderImages = (data) => {
     if (!data.session_done) {
         //$('#1').css('backgroundImage', `url(${data.photos.1.uri})`).show()
         //$('#2').css('backgroundImage', `url(${data.photos.2.uri})`).show()
-        $('#1').css('backgroundImage', 'url(https://s3-media1.fl.yelpcdn.com/bphoto/CYaDabytn5SDvxXLoK3aYQ/o.jpg)').show()
-        $('#2').css('backgroundImage', 'url(https://s3-media4.fl.yelpcdn.com/bphoto/F7ido-iqXCw-R0-XhkeHiA/o.jpg)').show()
+        $('#1').css('backgroundImage', 'url(https://s3-media1.fl.yelpcdn.com/bphoto/CYaDabytn5SDvxXLoK3aYQ/o.jpg)')
+        $('#2').css('backgroundImage', 'url(https://s3-media4.fl.yelpcdn.com/bphoto/F7ido-iqXCw-R0-XhkeHiA/o.jpg)')
         resizeImages()
     }
 }
@@ -48,17 +48,19 @@ $('#start-button').on('click', function(){
     $('.logo').css({'margin-top': top})
     $('.logo').animate({'margin-top': '15px', 'max-width': '25%'}, function(){
         $("#instructions").toggleClass('hidden');
+        $('#select-picture').toggleClass('hidden'); 
     })
     $(".subhead").fadeOut(200)
     $("#start-button").fadeOut(200)
-    renderImages({session_done: false})
-    bindClickHandlers({session_id: 123})
 })
 
-$(window).on('resize', resizeImages)
+renderImages({session_done: false})
+bindClickHandlers({session_id: 123})
 
 getUserPosition()
     .then(startSession)
     .then(renderImages)
     .then(bindClickHandlers)
+
+$(window).on('resize', resizeImages)
 

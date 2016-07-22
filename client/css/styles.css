@@ -107,13 +107,22 @@ body {
     width: 45%;
     background-position: center;
     background-size: cover;
-    display: none;
 }
 
 /* iPhones */
 @media (max-width: 400px) {
     .logo {
         max-width: 75%;
+    }
+    
+    #select-picture{
+        flex-direction: column;
+        justify-content: space-around;
+    }
+    
+    .select-img{
+        width: 80%;
+        margin: 40px;
     }
 }
 
