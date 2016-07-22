@@ -150,6 +150,10 @@ body {
     font-weight: bold;
 }
 
+#recommendation a{
+    color: #fff;
+}
+
 #we-think{
     letter-spacing: 1px;
 }

@@ -69,7 +69,7 @@ const showEndPage = ({result}) => {
     console.log(result)
     $('#select-picture').toggleClass('hidden');
     $('#ending-page').toggleClass('hidden');
-    $('#recommendation').html(`<a href="https://www.yelp.com/search?find_desc=${category}&find_loc=140+New+Montgomery+St">${category}</a>`)
+    $('#recommendation').html(`<a href="https://www.yelp.com/search?find_desc=${category}&find_loc=140+New+Montgomery+St" target="_blank">${category}</a>`)
 }
 const resizeImages = () => {
     $('.select-img').height($('.select-img').width())
