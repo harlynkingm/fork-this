@@ -3,6 +3,7 @@ import $ from 'jquery'
 const API_BASE_PATH = 'http://interndev1-uswest1adevc'
 const API_URL = 'api/v1/'
 let ANIMATING = false
+let LOAD_COUNT = 0;
 
 const getUserPosition = () => {
     return new Promise((resolve, reject) => {
@@ -42,6 +43,14 @@ const bindClickHandlers = ({session_id}) => {
 
 const makeChoice = (sessionId, choice, event) => {
     ANIMATING = true
+    LOAD_COUNT++
+    if (LOAD_COUNT == 1){
+        $("#instructions").css('opacity', 0);
+        setTimeout(() => {
+            $('#instructions').html("After a few selections, we will recommend a restaurant for you.")
+            $('#instructions').css({'opacity': 1})
+        }, 400)
+    }
     $('#img1').css({'transform':'translateX(-300px)', 'opacity': '0'});
     $('#img2').css({'transform':'translateX(300px)', 'opacity': '0'});
 //    $.get(API_URL + 'get_pictures/' + sessionId + '/' + choice)
@@ -73,6 +82,7 @@ $('#start-button').on('click', function(){
     })
     $(".subhead").fadeOut(200)
     $("#start-button").fadeOut(200)
+    $('.img-dish').css('opacity', '1');
 })
 
 const slideIn = () => {
