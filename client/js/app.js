@@ -1,7 +1,7 @@
 import $ from 'jquery'
 
-const API_BASE_PATH = 'http://interndev1-uswest1adevc';
-const API_URL = 'api/v1/';
+const API_BASE_PATH = 'http://dev7-devc:5000/'
+const API_URL = API_BASE_PATH + 'api/v1/'
 
 let ANIMATING = false;
 let LOAD_COUNT = 0;
@@ -51,8 +51,8 @@ const startSession = (geolocation) => {
     const loc = geolocation.coords;
     return $.ajax({
         method: 'GET',
-        url: API_URL + 'start_session/' + loc.latitude + '/' + loc.longitude
-    });
+        url: API_URL + 'start_session/'// + loc.latitude + '/' + loc.longitude
+    })
 }
 
 
@@ -63,20 +63,22 @@ const getRandomInt = (min, max) => {
 const renderImages = (data) => {
     return new Promise((resolve, reject) => {
         if (!data.session_done) {
-            //$('#img1').css('backgroundImage', `url(${data.photos.1.uri})`).show()
-            //$('#img2').css('backgroundImage', `url(${data.photos.2.uri})`).show()
+            $('#img1').css('backgroundImage', `url(${data.photos[1]})`)
+            $('#img2').css('backgroundImage', `url(${data.photos[2]})`)
             let rand1 = getRandomInt(0, IMAGES.length - 1);
             let rand2 = getRandomInt(0, IMAGES.length - 1);
+            /*
             while (rand1 == rand2){
                 rand2 = getRandomInt(0, IMAGES.length - 1);
             };
             [IMG_INDEX_1, IMG_INDEX_2] = [rand1, rand2];
+            */
             $('#img1').css('transform', 'translateX(-300px)');
             $('#img2').css('transform', 'translateX(300px)');
             $('#img1').css('backgroundImage', `url(${IMAGES[rand1]})`);
             $('#img2').css('backgroundImage', `url(${IMAGES[rand2]})`);
             resizeImages();
-            resolve();
+            resolve(data);
         } else {
             let most = 0;
             let cat = '';
@@ -129,10 +131,12 @@ const makeChoice = (sessionId, choice, event) => {
     }
     $('#img1').css({'transform':'translateX(-300px)', 'opacity': '0', 'box-shadow': ''});
     $('#img2').css({'transform':'translateX(300px)', 'opacity': '0', 'box-shadow': ''});
-//    $.get(API_URL + 'get_pictures/' + sessionId + '/' + choice)
-//        .then(renderImages)
-//        .then(slideIn, showEndPage)
-    setTimeout(()=>renderImages({session_done: SESSION_DONE}).then(slideIn, showEndPage), 1000);
+    setTimeout(() => {
+        $.get(API_URL + 'get_pictures/' + sessionId + '/' + choice)
+            .then(renderImages)
+            .then(slideIn, showEndPage)
+    }, 1000)
+     //setTimeout(()=>renderImages({session_done: SESSION_DONE}).then(slideIn, showEndPage), 1000)
 }
 
 const showEndPage = ({result}) => {
@@ -204,13 +208,14 @@ $('.select-img').on('mouseout', function(){
     }
 });
 
-renderImages({session_done: false});
-bindClickHandlers({session_id: 123});
+$(window).on('resize', resizeImages);
+
+//renderImages({session_done: false});
+//bindClickHandlers({session_id: 123});
 
 getUserPosition()
     .then(startSession)
     .then(renderImages)
     .then(bindClickHandlers);
 
-$(window).on('resize', resizeImages);
 
