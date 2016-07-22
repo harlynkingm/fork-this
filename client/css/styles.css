@@ -135,6 +135,7 @@ body {
     background-size: cover;
     opacity: 0;
     transition: transform .5s, box-shadow .5s, opacity .5s;
+    cursor: pointer;
 }
 
 #img1 {
@@ -143,20 +144,6 @@ body {
 
 #img2 {
     transform: translateX(300px);
-}
-
-#img1:hover {
-    cursor: pointer;
-    -webkit-box-shadow:inset 0px 0px 0px 20px #fff;
-    -moz-box-shadow:inset 0px 0px 0px 20px #fff;
-    box-shadow:inset 0px 0px 0px 20px #fff;
-}
-
-#img2:hover {
-    cursor: pointer;
-    -webkit-box-shadow:inset 0px 0px 0px 20px #fff;
-    -moz-box-shadow:inset 0px 0px 0px 20px #fff;
-    box-shadow:inset 0px 0px 0px 20px #fff;
 }
 
 /* iPhones */

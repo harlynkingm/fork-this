@@ -4,6 +4,7 @@ const API_BASE_PATH = 'http://interndev1-uswest1adevc'
 const API_URL = 'api/v1/'
 let ANIMATING = false
 let LOAD_COUNT = 0;
+let SESSION_DONE = false
 
 const getUserPosition = () => {
     return new Promise((resolve, reject) => {
@@ -44,19 +45,22 @@ const bindClickHandlers = ({session_id}) => {
 const makeChoice = (sessionId, choice, event) => {
     ANIMATING = true
     LOAD_COUNT++
-    if (LOAD_COUNT == 1){
+    if (LOAD_COUNT == 2){
         $("#instructions").css('opacity', 0);
         setTimeout(() => {
-            $('#instructions').html("After a few selections, we will recommend a restaurant for you.")
+            $('#instructions').html("After a few selections, we'll recommend a restaurant for you.")
             $('#instructions').css({'opacity': 1})
         }, 400)
     }
-    $('#img1').css({'transform':'translateX(-300px)', 'opacity': '0'});
-    $('#img2').css({'transform':'translateX(300px)', 'opacity': '0'});
+    if (LOAD_COUNT == 10){
+        SESSION_DONE = true
+    }
+    $('#img1').css({'transform':'translateX(-300px)', 'opacity': '0', 'box-shadow': ''});
+    $('#img2').css({'transform':'translateX(300px)', 'opacity': '0', 'box-shadow': ''});
 //    $.get(API_URL + 'get_pictures/' + sessionId + '/' + choice)
 //        .then(renderImages)
 //        .then(slideIn, showEndPage)
-    setTimeout(()=>renderImages({session_done: false}).then(slideIn, showEndPage), 1000)
+    setTimeout(()=>renderImages({session_done: SESSION_DONE}).then(slideIn, showEndPage), 1000)
 }
 
 const showEndPage = () => {
@@ -92,21 +96,37 @@ const slideIn = () => {
     setTimeout(() => ANIMATING = false, 500)
 }
 
-$('#img1').on('mouseover', function(){
+const twist = (obj, degs) => {
     if (!ANIMATING){
-        $(this).css('transform', 'rotateZ(-2deg)')
+        $(obj).css({
+            'transform': `rotateZ(${degs}deg)`,
+            'box-shadow': 'inset 0px 0px 0px 20px #fff'
+        })
     }
+}
+
+$('#img1').on('mouseover', function(){
+    twist(this, -2);
+})
+
+$('#img1').on('mousemove', function(){
+    twist(this, -2);
 })
 
 $('#img2').on('mouseover', function(){
-    if (!ANIMATING){
-        $(this).css('transform', 'rotateZ(2deg)')
-    }
+    twist(this, 2);
+})
+
+$('#img2').on('mousemove', function(){
+    twist(this, 2);
 })
 
 $('.select-img').on('mouseout', function(){
     if (!ANIMATING){
-        $(this).css('transform', 'rotateZ(0deg)');
+        $(this).css({
+            'transform': 'rotateZ(0deg)',
+            'box-shadow': ''
+        });
     }
 })
 
