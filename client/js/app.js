@@ -33,7 +33,6 @@ const bindClickHandlers = ({session_id}) => {
 }
 
 const makeChoice = (sessionId, choice) => {
-    console.log(sessionId, choice)
     $.get(API_URL + 'get_pictures/' + sessionId + '/' + choice)
         .then(renderImages)
 }
@@ -44,11 +43,16 @@ const resizeImages = () => {
 
 $('#start-button').on('click', function(){
     const top = $('.logo').position().top + "px"
+    const logoWidth = $(window).width() < 400 ? '40%' : '25%';
+    if ($(window).width() < 400) {
+        console.log('less 400')
+        $('.flex-container').css('height', '100%')
+    }
     $('.flex-container').css('justify-content', 'flex-start')
     $('.logo').css({'margin-top': top})
-    $('.logo').animate({'margin-top': '15px', 'max-width': '25%'}, function(){
+    $('.logo').animate({'margin-top': '15px', 'max-width': logoWidth}, function(){
         $("#instructions").toggleClass('hidden');
-        $('#select-picture').toggleClass('hidden'); 
+        $('#select-picture').toggleClass('hidden');
         $("#img1").css({'transform':'translateX(0px)'});
         $("#img2").css({'transform':'translateX(0px)'});
         $(".select-img").animate({'opacity':1});
