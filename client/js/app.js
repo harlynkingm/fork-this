@@ -2,9 +2,17 @@ import $ from 'jquery'
 
 const API_BASE_PATH = 'http://interndev1-uswest1adevc'
 const API_URL = 'api/v1/'
+
 let ANIMATING = false
 let LOAD_COUNT = 0;
 let SESSION_DONE = false
+
+let IMAGES = [
+    'https://s3-media3.fl.yelpcdn.com/bphoto/kODDC-4FivgtRxMh2uFvDw/o.jpg',
+    'https://s3-media2.fl.yelpcdn.com/bphoto/4hOJukkFqaqWqdR_vjKIcQ/o.jpg',
+    'https://s3-media2.fl.yelpcdn.com/bphoto/4hOJukkFqaqWqdR_vjKIcQ/o.jpg'
+]
+
 
 const getUserPosition = () => {
     return new Promise((resolve, reject) => {
@@ -27,8 +35,8 @@ const renderImages = (data) => {
             //$('#img2').css('backgroundImage', `url(${data.photos.2.uri})`).show()
             $('#img1').css('transform', 'translateX(-300px)');
             $('#img2').css('transform', 'translateX(300px)');
-            $('#img1').css('backgroundImage', 'url(https://s3-media1.fl.yelpcdn.com/bphoto/CYaDabytn5SDvxXLoK3aYQ/o.jpg)')
-            $('#img2').css('backgroundImage', 'url(https://s3-media4.fl.yelpcdn.com/bphoto/F7ido-iqXCw-R0-XhkeHiA/o.jpg)')
+            $('#img1').css('backgroundImage', 'url()')
+            $('#img2').css('backgroundImage', 'url()')
             resizeImages()
             resolve()
         } else {
