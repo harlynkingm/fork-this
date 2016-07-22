@@ -179,6 +179,10 @@ body {
         font-weight: 400;
     }
     
+    #ending-page{
+        transform: scale(1);
+    }
+    
     #select-picture {
         margin-top: 0px;
     }
