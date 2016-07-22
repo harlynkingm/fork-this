@@ -32,6 +32,7 @@ const renderImages = (data) => {
             resizeImages()
             resolve()
         } else {
+            const data = data || { result: { search_result: { category: 'thai' } } };
             reject(data)
         }
     })
@@ -63,9 +64,12 @@ const makeChoice = (sessionId, choice, event) => {
     setTimeout(()=>renderImages({session_done: SESSION_DONE}).then(slideIn, showEndPage), 1000)
 }
 
-const showEndPage = () => {
+const showEndPage = ({result}) => {
+    const category = result.search_result.category
+    console.log(result)
     $('#select-picture').toggleClass('hidden');
     $('#ending-page').toggleClass('hidden');
+    $('#recommendation').html(`<a href="https://www.yelp.com/search?find_desc=${category}&find_loc=140+New+Montgomery+St">${category}</a>`)
 }
 const resizeImages = () => {
     $('.select-img').height($('.select-img').width())
@@ -82,7 +86,7 @@ $('#start-button').on('click', function(){
     $('.logo').css({'margin-top': top})
     $('.logo').animate({'margin-top': '15px', 'max-width': logoWidth}, function(){
         $("#instructions").toggleClass('hidden');
-        $('#select-picture').toggleClass('hidden'); 
+        $('#select-picture').toggleClass('hidden');
         slideIn();
     })
     $(".subhead").fadeOut(200)
