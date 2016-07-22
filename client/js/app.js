@@ -28,8 +28,8 @@ const renderImages = (data) => {
 }
 
 const bindClickHandlers = ({session_id}) => {
-    $('#1').on('click', makeChoice.bind(session_id, 1))
-    $('#2').on('click', makeChoice.bind(session_id, 2))
+    $('#1').on('click', makeChoice.bind(null, session_id, 1))
+    $('#2').on('click', makeChoice.bind(null, session_id, 2))
 }
 
 const makeChoice = (sessionId, choice) => {
@@ -47,8 +47,8 @@ $('#start-button').on('click', function(){
     $('.flex-container').css('justify-content', 'flex-start')
     $('.logo').css({'margin-top': top})
     $('.logo').animate({'margin-top': '15px', 'max-width': '25%'}, function(){
-        $("#instructions").toggleClass('hidden');
-        $('#select-picture').toggleClass('hidden'); 
+        $("#instructions").toggleClass('hidden')
+        $('#select-picture').toggleClass('hidden')
     })
     $(".subhead").fadeOut(200)
     $("#start-button").fadeOut(200)
