@@ -28,8 +28,8 @@ const renderImages = (data) => {
 }
 
 const bindClickHandlers = ({session_id}) => {
-    $('#img1').on('click', makeChoice.bind(session_id, 1))
-    $('#img2').on('click', makeChoice.bind(session_id, 2))
+    $('#img1').on('click', makeChoice.bind(null, session_id, 1))
+    $('#img2').on('click', makeChoice.bind(null, session_id, 2))
 }
 
 const makeChoice = (sessionId, choice) => {
