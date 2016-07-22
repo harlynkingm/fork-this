@@ -103,7 +103,7 @@ const makeChoice = (sessionId, choice, event) => {
     if (LOAD_COUNT == 2){
         $("#instructions").css('opacity', 0);
         setTimeout(() => {
-            $('#instructions').html("After a few selections, we'll recommend a restaurant for you.");
+            $('#instructions').html("After a few selections, we'll recommend a search for you.");
             $('#instructions').css({'opacity': 1});
         }, 400);
     }
